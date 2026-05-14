@@ -1,0 +1,44 @@
+.perfil {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.perfil-header {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.perfil-header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.estadisticas {
+  display: flex;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.grid-publicaciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.grid-publicaciones img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,82 @@
+.publicacion {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  overflow: hidden;
+
+  box-shadow: 0 6px 20px
+    rgba(0, 0, 0, 0.06);
+
+  transition: 0.3s;
+}
+
+.publicacion:hover {
+  transform: translateY(-3px);
+}
+
+.publicacion-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 15px;
+}
+
+.publicacion-header img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.imagen-publicacion {
+  width: 100%;
+  height: 500px;
+
+  object-fit: cover;
+
+  cursor: pointer;
+}
+
+.acciones {
+  padding: 10px 15px;
+}
+
+.acciones button {
+  border: none;
+  background: none;
+
+  font-size: 28px;
+
+  transition: 0.2s;
+}
+
+.acciones button:hover {
+  transform: scale(1.1);
+}
+
+.likes {
+  font-weight: bold;
+  padding: 0 15px;
+}
+
+.publicacion p {
+  padding: 0 15px 10px;
+  line-height: 1.5;
+}
+
+.fecha {
+  display: block;
+
+  color: gray;
+
+  font-size: 12px;
+
+  padding: 0 15px 15px;
+}
+
+@media (max-width: 768px) {
+  .imagen-publicacion {
+    height: 350px;
+  }
+}

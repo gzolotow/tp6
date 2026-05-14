@@ -1,0 +1,53 @@
+.encabezado {
+  position: sticky;
+  top: 0;
+
+  background-color: white;
+
+  border-bottom: 1px solid #dbdbdb;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+
+  z-index: 100;
+}
+
+.encabezado h1 {
+  font-size: 30px;
+}
+
+.encabezado nav {
+  display: flex;
+  gap: 12px;
+}
+
+.encabezado button {
+  border: none;
+
+  background-color: #0095f6;
+
+  color: white;
+
+  padding: 10px 16px;
+
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+
+.encabezado button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .encabezado {
+    padding: 15px;
+  }
+
+  .encabezado h1 {
+    font-size: 24px;
+  }
+}
