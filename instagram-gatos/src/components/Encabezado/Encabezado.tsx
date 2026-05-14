@@ -1,24 +1,44 @@
 import './Encabezado.css'
 
 interface Props {
-  cambiarVista: (vista: 'feed' | 'perfil') => void
+  cambiarVista: (
+    vista: 'feed' | 'perfil'
+  ) => void
 }
 
-const Encabezado = ({ cambiarVista }: Props) => {
+const Encabezado = ({
+  cambiarVista,
+}: Props) => {
   return (
-    <header className='encabezado'>
+    <aside className='sidebar'>
       <h1>Catstagram</h1>
 
       <nav>
-        <button onClick={() => cambiarVista('feed')}>
-          Inicio
+        <button
+          onClick={() =>
+            cambiarVista('feed')
+          }
+        >
+          🏠 Inicio
         </button>
 
-        <button onClick={() => cambiarVista('perfil')}>
-          Perfil
+        <button
+          onClick={() =>
+            cambiarVista('perfil')
+          }
+        >
+          👤 Perfil
+        </button>
+
+        <button>
+          ❤️ Notificaciones
+        </button>
+
+        <button>
+          ✉️ Mensajes
         </button>
       </nav>
-    </header>
+    </aside>
   )
 }
 

@@ -92,27 +92,29 @@ function App() {
   }
 
   return (
-    <>
+    <div className='layout'>
       <Encabezado cambiarVista={setVista} />
 
-      {vista === 'feed' && (
-        <>
-          <BarraHistorias />
+      <main className='contenido-principal'>
+        {vista === 'feed' && (
+          <div className='feed-container'>
+            <BarraHistorias />
 
-          <Feed
+            <Feed
+              publicaciones={publicaciones}
+              abrirModal={
+                setPublicacionSeleccionada
+              }
+            />
+          </div>
+        )}
+
+        {vista === 'perfil' && (
+          <Perfil
             publicaciones={publicaciones}
-            abrirModal={
-              setPublicacionSeleccionada
-            }
           />
-        </>
-      )}
-
-      {vista === 'perfil' && (
-        <Perfil
-          publicaciones={publicaciones}
-        />
-      )}
+        )}
+      </main>
 
       {publicacionSeleccionada && (
         <ModalPublicacion
@@ -126,16 +128,8 @@ function App() {
           }
         />
       )}
-    </>
+    </div>
   )
 }
-<footer
-  style={{
-    textAlign: 'center',
-    padding: '30px',
-    color: 'gray',
-  }}
->
-  Catstagram © 2026
-</footer>
+
 export default App
