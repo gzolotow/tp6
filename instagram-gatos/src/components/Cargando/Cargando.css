@@ -1,22 +1,19 @@
-.contenedor-cargando {
+.cargando {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 100px;
-  gap: 20px;
+  padding: 60px;
 }
 
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 5px solid #ddd;
-  border-top: 5px solid #0095f6;
+.cargando__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #dbdbdb;
+  border-top-color: #8e8e8e;
   border-radius: 50%;
-  animation: girar 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
-@keyframes girar {
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

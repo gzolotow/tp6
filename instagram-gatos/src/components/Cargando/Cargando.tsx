@@ -1,13 +1,12 @@
-import './Cargando.css'
+import React from 'react';
+import './Cargando.css';
 
-const Cargando = () => {
+const Cargando: React.FC = () => {
   return (
-    <div className='contenedor-cargando'>
-      <div className='spinner'></div>
-
-      <p>Cargando publicaciones...</p>
+    <div className="cargando">
+      <div className="cargando__spinner"></div>
     </div>
-  )
-}
+  );
+};
 
-export default Cargando
+export default Cargando;

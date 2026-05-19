@@ -1,5 +1,140 @@
-.feed {
+.feed-layout {
+  display: flex;
+  gap: 32px;
+  max-width: 975px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+}
+
+.feed__main {
+  flex: 1;
+  max-width: 614px;
+}
+
+.feed__sidebar {
+  width: 293px;
+  flex-shrink: 0;
+  padding-top: 24px;
+}
+
+/* Sidebar usuario */
+.sidebar__usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sidebar__user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar__user-avatar img {
   width: 100%;
-  max-width: 600px;
-  margin: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sidebar__username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.sidebar__fullname {
+  font-size: 14px;
+  color: #8e8e8e;
+}
+
+.sidebar__switch {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0095f6;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Sugerencias */
+.sidebar__sugerencias-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sidebar__sugerencias-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8e8e8e;
+}
+
+.sidebar__see-all {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.sidebar__sugerencia {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sidebar__sug-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__sug-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sidebar__sug-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.sidebar__sug-followed {
+  font-size: 12px;
+  color: #8e8e8e;
+}
+
+.sidebar__follow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0095f6;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sidebar__footer {
+  margin-top: 24px;
+  font-size: 11px;
+  color: #c7c7c7;
+  line-height: 1.8;
+}
+
+.sidebar__copyright {
+  margin-top: 8px;
 }

@@ -1,82 +1,77 @@
-/* src/components/Encabezado/Encabezado.css */
-
-.sidebar {
-  width: 210px;
-  min-width: 210px;
-
-  height: 100vh;
-
-  background-color: white;
-
-  border-right: 1px solid #dbdbdb;
-
-  padding: 30px 15px;
-
+.encabezado {
   position: fixed;
-  left: 0;
   top: 0;
-
-  transition: 0.3s;
-}
-
-.sidebar h1 {
-  font-size: 28px;
-
-  margin-bottom: 40px;
-}
-
-.sidebar nav {
+  left: 0;
+  width: 244px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #dbdbdb;
   display: flex;
   flex-direction: column;
-
-  gap: 10px;
+  padding: 12px 12px 20px;
+  z-index: 1000;
 }
 
-.sidebar button {
-  border: none;
+.encabezado__logo {
+  padding: 16px 12px 24px;
+}
 
-  background: none;
+.encabezado__logo-text {
+  font-family: 'Dancing Script', 'Billabong', cursive;
+  font-size: 28px;
+  color: #262626;
+}
 
-  text-align: left;
+.encabezado__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
 
+.encabezado__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   padding: 12px;
-
-  border-radius: 12px;
-
-  font-size: 15px;
-
-  transition: 0.2s;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #262626;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: left;
+  transition: background 0.15s;
 }
 
-.sidebar button:hover {
-  background-color: #f3f3f3;
+.encabezado__nav-item:hover {
+  background: #f0f0f0;
 }
 
-/* TABLET */
-
-@media (max-width: 1200px) {
-  .sidebar {
-    width: 90px;
-    min-width: 90px;
-
-    padding: 25px 10px;
-  }
-
-  .sidebar h1 {
-    font-size: 18px;
-  }
-
-  .sidebar button {
-    font-size: 13px;
-
-    padding: 10px;
-  }
+.encabezado__nav-item.active span {
+  font-weight: 700;
 }
 
-/* MOBILE */
+.encabezado__nav-item span {
+  font-weight: 400;
+}
 
-@media (max-width: 900px) {
-  .sidebar {
-    display: none;
-  }
+.encabezado__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.encabezado__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.encabezado__bottom {
+  border-top: 1px solid #dbdbdb;
+  padding-top: 12px;
 }

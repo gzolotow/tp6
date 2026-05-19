@@ -1,135 +1,66 @@
-import { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import type { Post, Story } from './types';import { fetchCatImages, fetchStoriesAvatars } from './services/servicioApi';
+import Encabezado from './components/Encabezado/Encabezado';
+import Feed from './components/Feed/Feed';
+import Perfil from './components/Perfil/Perfil';
+import ModalPublicacion from './components/ModalPublicacion/ModalPublicacion';
+import Cargando from './components/Cargando/Cargando';
+import './styles/global.css';
 
-import BarraHistorias from './components/BarraHistorias/BarraHistorias'
-import Cargando from './components/Cargando/Cargando'
-import Encabezado from './components/Encabezado/Encabezado'
-import Feed from './components/Feed/Feed'
-import ModalPublicacion from './components/ModalPublicacion/ModalPublicacion'
-import Perfil from './components/Perfil/Perfil'
+type View = 'feed' | 'perfil';
 
-import { captions } from './data/captions'
-import { comentariosFake } from './data/comentarios'
-
-import { obtenerGatos } from './services/servicioApi'
-
-import type {
-  GatoApi,
-  PublicacionType,
-} from './types/types'
-
-function App() {
-  const [publicaciones, setPublicaciones] =
-    useState<PublicacionType[]>([])
-
-  const [cargando, setCargando] =
-    useState(true)
-
-  const [vista, setVista] = useState<
-    'feed' | 'perfil'
-  >('feed')
-
-  const [
-    publicacionSeleccionada,
-    setPublicacionSeleccionada,
-  ] = useState<PublicacionType | null>(
-    null
-  )
+const App: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [currentView, setCurrentView] = useState<View>('feed');
 
   useEffect(() => {
-    const cargarPublicaciones = async () => {
+    const loadData = async () => {
       try {
-        const data = await obtenerGatos()
-
-        const publicacionesTransformadas =
-          data.map(
-            (
-              gato: GatoApi,
-              index: number
-            ) => ({
-              id: gato.id,
-
-              imagen: gato.url,
-
-              usuario: `gato_${
-                index + 1
-              }`,
-
-              avatar: `https://i.pravatar.cc/150?img=${
-                index + 10
-              }`,
-
-              descripcion:
-                captions[
-                  index % captions.length
-                ],
-
-              likes: Math.floor(
-                Math.random() * 1000
-              ),
-
-              comentarios:
-                comentariosFake,
-
-              fecha: 'Hace 2 horas',
-            })
-          )
-
-        setPublicaciones(
-          publicacionesTransformadas
-        )
+        setLoading(true);
+        const [fetchedPosts, fetchedStories] = await Promise.all([
+          fetchCatImages(12),
+          fetchStoriesAvatars(),
+        ]);
+        setPosts(fetchedPosts);
+        setStories(fetchedStories);
       } catch (error) {
-        console.log(error)
+        console.error('Error loading data:', error);
       } finally {
-        setCargando(false)
+        setLoading(false);
       }
-    }
+    };
 
-    cargarPublicaciones()
-  }, [])
-
-  if (cargando) {
-    return <Cargando />
-  }
+    loadData();
+  }, []);
 
   return (
-    <div className='layout'>
-      <Encabezado cambiarVista={setVista} />
+    <div className="app">
+      <Encabezado onNavigate={setCurrentView} currentView={currentView} />
 
-      <main className='contenido-principal'>
-        {vista === 'feed' && (
-          <div className='feed-container'>
-            <BarraHistorias />
-
-            <Feed
-              publicaciones={publicaciones}
-              abrirModal={
-                setPublicacionSeleccionada
-              }
-            />
-          </div>
-        )}
-
-        {vista === 'perfil' && (
-          <Perfil
-            publicaciones={publicaciones}
-          />
-        )}
-      </main>
-
-      {publicacionSeleccionada && (
-        <ModalPublicacion
-          publicacion={
-            publicacionSeleccionada
-          }
-          cerrarModal={() =>
-            setPublicacionSeleccionada(
-              null
-            )
-          }
+      {loading ? (
+        <Cargando />
+      ) : currentView === 'feed' ? (
+        <Feed
+          posts={posts}
+          stories={stories}
+          onSelectPost={setSelectedPost}
+        />
+      ) : (
+        <Perfil
+          posts={posts}
+          onSelectPost={setSelectedPost}
         />
       )}
-    </div>
-  )
-}
 
-export default App
+      <ModalPublicacion
+        post={selectedPost}
+        onClose={() => setSelectedPost(null)}
+      />
+    </div>
+  );
+};
+
+export default App;

@@ -1,56 +1,30 @@
-import './BarraHistorias.css'
+import React from 'react';
+import type { Story } from '../../types';import './BarraHistorias.css';
 
-const historias = [
-  {
-    id: 1,
-    nombre: 'michi.dev',
-  },
-  {
-    id: 2,
-    nombre: 'gato_loco',
-  },
-  {
-    id: 3,
-    nombre: 'catlover',
-  },
-  {
-    id: 4,
-    nombre: 'minino',
-  },
-  {
-    id: 5,
-    nombre: 'pelusa',
-  },
-  {
-    id: 6,
-    nombre: 'gatito',
-  },
-  {
-    id: 7,
-    nombre: 'bigotes',
-  },
-]
+interface BarraHistoriasProps {
+  stories: Story[];
+}
 
-const BarraHistorias = () => {
+const BarraHistorias: React.FC<BarraHistoriasProps> = ({ stories }) => {
   return (
-    <div className='barra-historias'>
-      {historias.map((historia) => (
-        <div
-          key={historia.id}
-          className='historia'
-        >
-          <img
-            src={`https://i.pravatar.cc/150?img=${historia.id}`}
-            alt='historia'
-          />
-
-          <span>
-            {historia.nombre}
-          </span>
+    <div className="barra-historias">
+      {stories.map((story) => (
+        <div key={story.id} className="historia">
+          <div className={`historia__ring ${story.seen ? 'seen' : ''}`}>
+            <img
+              src={story.avatar}
+              alt={story.username}
+              className="historia__avatar"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://cataas.com/cat?width=60&height=60';
+              }}
+            />
+          </div>
+          <span className="historia__username">{story.username}</span>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default BarraHistorias
+export default BarraHistorias;

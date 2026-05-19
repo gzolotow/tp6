@@ -1,28 +1,13 @@
-/* src/components/BarraHistorias/BarraHistorias.css */
-
 .barra-historias {
-  width: 100%;
-
-  background-color: white;
-
-  border: 1px solid #dbdbdb;
-
-  border-radius: 20px;
-
-  padding: 18px 20px;
-
   display: flex;
-
-  align-items: center;
-
-  gap: 22px;
-
+  gap: 16px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
   overflow-x: auto;
-
-  margin-bottom: 30px;
-
-  box-shadow: 0 4px 12px
-    rgba(0, 0, 0, 0.04);
+  margin-bottom: 24px;
+  scrollbar-width: none;
 }
 
 .barra-historias::-webkit-scrollbar {
@@ -31,68 +16,39 @@
 
 .historia {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
-  gap: 8px;
-
-  min-width: 75px;
-
+  gap: 6px;
   cursor: pointer;
-
-  transition: 0.25s;
+  flex-shrink: 0;
 }
 
-.historia:hover {
-  transform: translateY(-3px);
-}
-
-.historia img {
-  width: 72px;
-  height: 72px;
-
+.historia__ring {
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
 
-  padding: 3px;
+.historia__ring.seen {
+  background: #dbdbdb;
+}
 
-  background: linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
-
+.historia__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
+  border: 3px solid #ffffff;
 }
 
-.historia span {
+.historia__username {
   font-size: 12px;
-
-  font-weight: 500;
-
-  color: #333;
-
-  max-width: 70px;
-
+  color: #262626;
+  max-width: 66px;
   overflow: hidden;
-
   text-overflow: ellipsis;
-
   white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .barra-historias {
-    padding: 14px;
-    gap: 16px;
-  }
-
-  .historia img {
-    width: 65px;
-    height: 65px;
-  }
+  text-align: center;
 }
